@@ -43,13 +43,13 @@ io.on('connection', (socket) => {
     socket.join(roomId);
     rooms.get(roomId).get('users').set(socket.id, userName);
     const users = [...rooms.get(roomId).get('users').values()];
-    socket.broadcast.to(roomId).emit("CHAT:SET_USERS", users);
+    socket.broadcast.to(roomId).emit('CHAT:SET_USERS', users);
   });
 
-  socket.on("CHAT:NEW_MESSAGE", ({ roomId, userName, text }) => {
+  socket.on('CHAT:NEW_MESSAGE', ({ roomId, userName, text }) => {
     const obj = { userName, text };
-    rooms.get(roomId).get("messages").push(obj);
-    socket.broadcast.to(roomId).emit("CHAT:NEW_MESSAGE", obj);
+    rooms.get(roomId).get('messages').push(obj);
+    socket.broadcast.to(roomId).emit('CHAT:NEW_MESSAGE', obj);
 		});
 
   socket.on('disconnect', () => {

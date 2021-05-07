@@ -18,7 +18,7 @@ export default function Chat({ users, messages, userName, roomId, setMessage }) 
 	};
 
 	React.useEffect(() => {
-		messagesRef.current.scrollTo(0, 1000);
+		messagesRef.current.scrollTo(0, 99999);
 	}, [messages]);
 
 	return (

@@ -1,9 +1,9 @@
 import React from 'react';
-import axios  from "axios";
+import axios  from 'axios';
 import JoinChat from './components/JoinChat';
-import Chat from "./components/Chat";
-import reducer from "./reducer";
-import socket from "./socket";
+import Chat from './components/Chat';
+import reducer from './reducer';
+import socket from './socket';
 
 
 
@@ -24,7 +24,7 @@ function App() {
 	}
 	const setMessage = (message) => {
 		dispatch({
-			type: "NEW_MESSAGE",
+			type: 'NEW_MESSAGE',
 			payload: message,
 		});
 	}
@@ -44,12 +44,12 @@ function App() {
 
 	React.useEffect(() => {
 		socket.on('CHAT:SET_USERS', setUsers);
-		socket.on("CHAT:NEW_MESSAGE", setMessage);
+		socket.on('CHAT:NEW_MESSAGE', setMessage);
 	}, []);
 	
 
 	return (
-		<div className="wrapper">
+		<div className='wrapper'>
 			{!state.joined ? (
 				<JoinChat onLogin={onLogin} />
 			) : (
